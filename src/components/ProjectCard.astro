@@ -1,0 +1,67 @@
+---
+import type { Project } from '../data/projects';
+import ProjectCarousel from './ProjectCarousel.astro';
+
+interface Props {
+	project: Project;
+	index: number;
+}
+
+const { project, index } = Astro.props;
+const reversed = index % 2 === 1;
+---
+
+<article class="project-card" data-project-card>
+	<div class="project-card__grid">
+		<div class:list={['project-card__media', reversed && 'project-card__media--reversed']}>
+			<ProjectCarousel id={project.id} images={project.images} />
+		</div>
+
+		<div class:list={['project-card__details', reversed && 'project-card__details--reversed']}>
+			<div>
+				<h2 class="project-card__title">{project.title}</h2>
+				<p class="project-card__description">{project.description}</p>
+			</div>
+
+			<div class="project-card__tech">
+				{project.technologies.map((tech) => (
+					<span class="project-card__chip">{tech}</span>
+				))}
+			</div>
+
+			{project.features && project.features.length > 0 && (
+				<ul class="project-card__features">
+					{project.features.map((feature) => (
+						<li>
+							<span class="project-card__bullet" aria-hidden="true"></span>
+							<span>{feature}</span>
+						</li>
+					))}
+				</ul>
+			)}
+
+			<div class="project-card__actions">
+				{project.liveUrl && (
+					<a
+						href={project.liveUrl}
+						class="btn-primary project-card__btn"
+						target={project.liveUrl !== '#' ? '_blank' : undefined}
+						rel={project.liveUrl !== '#' ? 'noreferrer noopener' : undefined}
+					>
+						Live Demo
+					</a>
+				)}
+				{project.githubUrl && (
+					<a
+						href={project.githubUrl}
+						class="project-card__btn project-card__btn--ghost"
+						target={project.githubUrl !== '#' ? '_blank' : undefined}
+						rel={project.githubUrl !== '#' ? 'noreferrer noopener' : undefined}
+					>
+						GitHub
+					</a>
+				)}
+			</div>
+		</div>
+	</div>
+</article>

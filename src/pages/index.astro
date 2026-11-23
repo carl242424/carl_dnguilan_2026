@@ -1,17 +1,75 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Carl — Portfolio" currentPath="/">
+	<section class="hero">
+		<div class="hero-copy">
+			<h1>
+				Bringing Ideas to Life Through <span class="gradient-text">Design</span>&<span class="gradient-text">Code</span>
+			</h1>
+			<p class="lead">
+				Hi, I'm Carl, an aspiring UI/UX Designer and Front-End Developer passionate about creating clean, intuitive, and user-centered digital experiences. I transform ideas into modern, responsive interfaces that are both visually appealing and easy to use.
+			</p>
+			<div class="actions">
+				<a class="btn-primary" href="#">Hire Me</a>
+				<a class="btn-link" href="/projects">
+					Previous Works
+					<span class="arrow" aria-hidden="true">→</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="hero-visual">
+			<div class="portrait-wrap">
+				<div class="portrait-rotating">
+					<svg class="portrait-ring" viewBox="0 0 420 420" aria-hidden="true">
+					<defs>
+						<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop offset="0%" stop-color="#7c3aed" />
+							<stop offset="100%" stop-color="#38bdf8" />
+						</linearGradient>
+					</defs>
+					<circle
+						cx="210"
+						cy="210"
+						r="198"
+						fill="none"
+						stroke="url(#ringGrad)"
+						stroke-width="3"
+						stroke-linecap="round"
+						stroke-dasharray="900 350"
+						transform="rotate(-35 210 210)"
+					></circle>
+				</svg>
+				<div class="float-badge badge-monitor" aria-hidden="true">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<rect x="2" y="3" width="20" height="14" rx="2"></rect>
+						<path d="M8 21h8M12 17v4"></path>
+					</svg>
+				</div>
+				<div class="float-badge badge-mobile" aria-hidden="true">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<rect x="5" y="2" width="14" height="20" rx="2"></rect>
+						<path d="M12 18h.01"></path>
+					</svg>
+				</div>
+				<div class="float-badge badge-code" aria-hidden="true">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>
+					</svg>
+				</div>
+			</div>
+			<div class="portrait-bg"></div>
+				<img
+					class="portrait"
+					src="/img/carl.png"
+					alt="Carl smiling with thumbs up"
+					width="320"
+					height="320"
+					loading="eager"
+				/>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import { floatingLangs } from '../data/floatingLangs';
+---
+
+<div class="lang-bg">
+	{floatingLangs.map((lang) => (
+		<span
+			class={`lang-float lang-float--${lang.size}`}
+			style={`top: ${lang.top}; left: ${lang.left}; animation-delay: ${lang.delay}; animation-duration: ${lang.duration};`}
+			tabindex="0"
+			aria-label={lang.label}
+		>
+			<img src={lang.icon} alt="" width="48" height="48" loading="lazy" decoding="async" />
+			<span class="lang-float__label">{lang.label}</span>
+		</span>
+	))}
+</div>

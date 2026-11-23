@@ -1,0 +1,96 @@
+---
+import type { ProjectImage } from '../data/projects';
+
+interface Props {
+	id: string;
+	images: ProjectImage[];
+}
+
+const { id, images } = Astro.props;
+const carouselId = `carousel-${id}`;
+---
+
+<div
+	class="project-carousel"
+	data-project-carousel
+	id={carouselId}
+	role="region"
+	aria-roledescription="carousel"
+	aria-label="Project screenshots"
+	tabindex="0"
+>
+	<div class="project-carousel__viewport">
+		<div class="project-carousel__track" data-carousel-track>
+			{images.map((image, index) => (
+				<div
+					class="project-carousel__slide"
+					data-carousel-slide
+					role="group"
+					aria-roledescription="slide"
+					aria-label={`${index + 1} of ${images.length}`}
+					aria-hidden={index !== 0}
+				>
+					<button
+						type="button"
+						class="project-carousel__image-btn"
+						data-carousel-image
+						data-src={image.src}
+						data-alt={image.alt}
+						aria-label={`View fullscreen: ${image.alt}`}
+					>
+						<img
+							src={image.src}
+							alt={image.alt}
+							class="project-carousel__image"
+							loading={index === 0 ? 'eager' : 'lazy'}
+							decoding="async"
+							draggable="false"
+						/>
+					</button>
+				</div>
+			))}
+		</div>
+
+		{images.length > 1 && (
+			<>
+				<button
+					type="button"
+					class="project-carousel__nav project-carousel__nav--prev"
+					data-carousel-prev
+					aria-label="Previous screenshot"
+					aria-controls={carouselId}
+				>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path d="M15 18l-6-6 6-6"></path>
+					</svg>
+				</button>
+				<button
+					type="button"
+					class="project-carousel__nav project-carousel__nav--next"
+					data-carousel-next
+					aria-label="Next screenshot"
+					aria-controls={carouselId}
+				>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path d="M9 18l6-6-6-6"></path>
+					</svg>
+				</button>
+			</>
+		)}
+	</div>
+
+	{images.length > 1 && (
+		<div class="project-carousel__dots" role="tablist" aria-label="Screenshot pagination">
+			{images.map((image, index) => (
+				<button
+					type="button"
+					class:list={['project-carousel__dot', index === 0 && 'project-carousel__dot--active']}
+					data-carousel-dot
+					role="tab"
+					aria-label={`Go to screenshot ${index + 1}: ${image.alt}`}
+					aria-selected={index === 0}
+				></button>
+			))}
+		</div>
+	)}
+</div>

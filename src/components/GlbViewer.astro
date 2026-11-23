@@ -1,0 +1,29 @@
+---
+interface Props {
+	src?: string;
+	alt?: string;
+}
+
+const { src = '/models/model.glb', alt = '3D model' } = Astro.props;
+---
+
+<section class="glb-section" aria-labelledby="glb-heading">
+	
+	<div class="glb-viewer">
+		<model-viewer
+			src={src}
+			alt={alt}
+			auto-rotate
+			camera-controls
+			touch-action="pan-y"
+			shadow-intensity="1"
+			exposure="1"
+			environment-image="neutral"
+			interaction-prompt="auto"
+		></model-viewer>
+	</div>
+</section>
+
+<script>
+	import '@google/model-viewer';
+</script>

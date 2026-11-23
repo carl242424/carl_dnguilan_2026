@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import GlbViewer from '../components/GlbViewer.astro';
+---
+
+<BaseLayout title="Contact — Carl" currentPath="/contact">
+	<section class="about">
+		<div class="about__copy">
+			<h1>Contact <span class="gradient-text">Me</span></h1>
+			<p>
+				Have a project in mind or want to collaborate? I'd love to hear from you. Feel free to reach
+				out — I'm always open to discussing new ideas, opportunities, and creative work.
+			</p>
+			<p>
+				<a class="contact__email" href="mailto:crl.dnguilan@gmail.com">crl.dnguilan@gmail.com</a>
+			</p>
+			<SocialLinks class="contact__socials" size={26} />
+		</div>
+		<div class="contact__photo-wrap">
+			<svg class="contact__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+				<path fill="#7c3aed" d="M41.5,-64C53.7,-57.4,63.6,-45.5,69.5,-31.6C75.4,-17.8,77.3,-2,75.4,13.2C73.5,28.4,67.8,42.9,57.7,53.4C47.6,63.9,33,70.3,17.9,72.6C2.8,74.9,-12.9,73.1,-27.1,67.6C-41.3,62.1,-54,52.8,-63.3,40.6C-72.6,28.4,-78.5,13.3,-79,1.8C-79.5,-9.7,-74.6,-22.4,-67.2,-34.2C-59.8,-45.9,-49.9,-56.8,-37.8,-63.5C-25.7,-70.2,-12.8,-72.7,0.8,-73.9C14.4,-75,28.8,-74.8,41.5,-64Z" transform="translate(100 100)" />
+			</svg>
+			<svg class="contact__blob contact__blob--secondary" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+				<path fill="#f43f5e" d="M38.8,-53.2C50.7,-46.8,61,-35.6,67.6,-22.1C74.3,-8.6,77.3,7.1,73.6,21.5C69.9,35.8,59.5,48.7,46.5,57.7C33.6,66.7,18.1,71.8,2,69.1C-14.1,66.4,-28.2,55.9,-39.7,46.1C-51.2,36.3,-60.1,27.1,-63.9,15.6C-67.7,4.1,-66.4,-9.9,-61.2,-22.4C-56,-34.9,-47,-45.9,-35.9,-52.7C-24.8,-59.5,-12.4,-62.1,0.6,-63C13.6,-63.8,27,-62.9,38.8,-53.2Z" transform="translate(100 100)" />
+			</svg>
+			<div class="contact__photo">
+				<GlbViewer src="/models/carl.glb" alt="Carl 3D model" />
+			</div>
+		</div>
+	</section>
+</BaseLayout>

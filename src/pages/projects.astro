@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout title="Projects — Carl" currentPath="/projects">
+	<section class="projects-page w-full flex-1 py-8 md:py-12 lg:py-16">
+		<header class="projects-page__header">
+			<h1 class="projects-page__title">
+				My <span class="gradient-text">Projects</span>
+			</h1>
+			<p class="projects-page__intro">
+				A selection of work showcasing design, development, and problem-solving across web and mobile.
+			</p>
+		</header>
+
+		<div class="projects-page__list">
+			{projects.map((project, index) => (
+				<ProjectCard project={project} index={index} />
+			))}
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import { initProjectAnimations, initProjectCarousels } from '../scripts/project-carousel';
+
+	initProjectCarousels();
+	initProjectAnimations();
+</script>

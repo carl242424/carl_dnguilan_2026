@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventBadge3D from '../3dEventBadge/EventBadge3D.jsx';
+---
+
+<BaseLayout title="About Me — Carl" currentPath="/about">
+	<section class="about">
+		<div class="about__copy">
+			<h1>About <span class="gradient-text">Me</span></h1>
+			<p>
+				Hi, I'm Carl, an aspiring UI/UX Designer and Front-End Developer. I love exploring new design ideas, creating engaging user experiences, and building modern, responsive websites. I'm passionate about continuous learning and turning creative concepts into intuitive digital products that people enjoy using.
+			</p>
+		</div>
+		<EventBadge3D client:only="react" />
+	</section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import { navLinks } from '../data/nav';
+
+interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+---
+
+<header class="header">
+	<a class="brand" href="/">
+		<span class="brand-name">Carl</span>
+	</a>
+	<nav class="nav" aria-label="Primary">
+		<ul>
+			{navLinks.map(({ label, href }) => (
+				<li>
+					<a href={href} class:list={[{ 'nav-link--active': currentPath === href }]}>
+						{label}
+					</a>
+				</li>
+			))}
+		</ul>
+	</nav>
+</header>

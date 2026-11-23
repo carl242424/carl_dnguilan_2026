@@ -1,0 +1,18 @@
+---
+import { socialLinks } from '../data/socials';
+
+interface Props {
+	class?: string;
+	size?: number;
+}
+
+const { class: className, size = 18 } = Astro.props;
+---
+
+<div class:list={[className ?? 'contact__socials']} aria-label="Social links">
+	{socialLinks.map(({ label, href, icon }) => (
+		<a href={href} aria-label={label}>
+			<svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={icon} />
+		</a>
+	))}
+</div>
